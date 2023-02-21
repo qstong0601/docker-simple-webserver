@@ -24,8 +24,8 @@ phases:
       - echo $exit_code_sast
       # DAST
       - docker network create zap-network
-      - docker run --rm --name $IMAGE_REPO_NAME -d -p 8080:$CONTAINER_PORT --network zap-network $IMAGE_REPO_NAME:$timestamp
-      - docker run --rm --network zap-network -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -I -j -t http://$IMAGE_REPO_NAME:8080 -g gen.conf -r $IMAGE_REPO_NAME_$timestamp.html
+      - docker run --rm --name $IMAGE_REPO_NAME -d -p 80:$CONTAINER_PORT --network zap-network $IMAGE_REPO_NAME:$timestamp
+      - docker run --rm --network zap-network -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -I -j -t http://$IMAGE_REPO_NAME:80 -g gen.conf -r $IMAGE_REPO_NAME_$timestamp.html
 
   post_build:
     commands:
