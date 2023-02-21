@@ -1,4 +1,4 @@
-FROM debian:9.3-slim
+FROM 456403635917.dkr.ecr.us-east-1.amazonaws.com/debian:9.3-slim
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
