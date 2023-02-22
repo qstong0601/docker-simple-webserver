@@ -41,10 +41,10 @@ phases:
           aws s3 cp sca_vuln.json s3://$CICD_BUCKET/$IMAGE_REPO_NAME/sca/sca_$IMAGE_REPO_NAME_$timestamp.json
           echo generating a pre-signed url for sharing SCA report
           PRESIGNED_URL_SCA=$(aws s3 presign s3://$CICD_BUCKET/$IMAGE_REPO_NAME/sca/sca_$IMAGE_REPO_NAME_$timestamp.json)
-          curl -X POST -H 'Content-type:application/json' --data "{\"text\": \"SCA Report of ${IMAGE_REPO_NAME}:${timestamp} ${PRESIGNED_URL_SCA}\"}" $SLACK_WEBHOOK
+          curl -X POST -H 'Content-type:application/json' --data "{\"text\": \"Build ${IMAGE_REPO_NAME}:${timestamp} SCA scan failed with report ${PRESIGNED_URL_SCA}\"}" $SLACK_WEBHOOK
         else
           echo SCA scan succeeded without critical vulnerabilities
-          curl -X POST -H 'Content-type:application/json' --data "{\"text\": \" ${IMAGE_REPO_NAME}:${timestamp} SCA scan succeeded without critical vulnerabilities\"}" $SLACK_WEBHOOK
+          curl -X POST -H 'Content-type:application/json' --data "{\"text\": \"Build ${IMAGE_REPO_NAME}:${timestamp} SCA scan succeeded without critical vulnerabilities\"}" $SLACK_WEBHOOK
         fi
       - |
         if [ $exit_code_sast -ne 0 ]; 
@@ -53,10 +53,10 @@ phases:
           aws s3 cp sast_vuln.json s3://$CICD_BUCKET/$IMAGE_REPO_NAME/sast/sast_$IMAGE_REPO_NAME_$timestamp.json
           echo generating a pre-signed url for sharing SAST report
           PRESIGNED_URL_SAST=$(aws s3 presign s3://$CICD_BUCKET/$IMAGE_REPO_NAME/sast/sast_$IMAGE_REPO_NAME_$timestamp.json)
-          curl -X POST -H 'Content-type:application/json' --data "{\"text\": \"SAST Report of ${IMAGE_REPO_NAME}:${timestamp} ${PRESIGNED_URL_SAST}\"}" $SLACK_WEBHOOK
+          curl -X POST -H 'Content-type:application/json' --data "{\"text\": \"Build ${IMAGE_REPO_NAME}:${timestamp} SAST scan failed with report ${PRESIGNED_URL_SAST}\"}" $SLACK_WEBHOOK
         else
           echo SAST scan succeeded without critical vulnerabilities
-          curl -X POST -H 'Content-type:application/json' --data "{\"text\": \"${IMAGE_REPO_NAME}:${timestamp} SAST scan succeeded without critical vulnerabilities\"}" $SLACK_WEBHOOK
+          curl -X POST -H 'Content-type:application/json' --data "{\"text\": \"Build ${IMAGE_REPO_NAME}:${timestamp} SAST scan succeeded without critical vulnerabilities\"}" $SLACK_WEBHOOK
         fi
       - |
         if [ $((warn_new + fail_new)) -gt 0 ]; 
@@ -65,10 +65,10 @@ phases:
           aws s3 cp $IMAGE_REPO_NAME_$timestamp.html s3://$CICD_BUCKET/$IMAGE_REPO_NAME/dast/dast_$IMAGE_REPO_NAME_$timestamp.html
           echo generating a pre-signed url for sharing DAST report
           PRESIGNED_URL_DAST=$(aws s3 presign s3://$CICD_BUCKET/$IMAGE_REPO_NAME/dast/dast_$IMAGE_REPO_NAME_$timestamp.html)
-          curl -X POST -H 'Content-type:application/json' --data "{\"text\": \"DAST Report of ${IMAGE_REPO_NAME}:${timestamp} ${PRESIGNED_URL_DAST}\"}" $SLACK_WEBHOOK
+          curl -X POST -H 'Content-type:application/json' --data "{\"text\": \"Build ${IMAGE_REPO_NAME}:${timestamp} DAST scan failed with report ${PRESIGNED_URL_DAST}\"}" $SLACK_WEBHOOK
         else
           echo DAST scan succeeded without critical vulnerabilities
-          curl -X POST -H 'Content-type:application/json' --data "{\"text\": \"${IMAGE_REPO_NAME}:${timestamp} DAST scan succeeded without critical vulnerabilities\"}" $SLACK_WEBHOOK
+          curl -X POST -H 'Content-type:application/json' --data "{\"text\": \"Build ${IMAGE_REPO_NAME}:${timestamp} DAST scan succeeded without critical vulnerabilities\"}" $SLACK_WEBHOOK
         fi
       - |
         if [ $exit_code_sca -eq 0 ] && [ $exit_code_sast -eq 0 ] && [ $((warn_new + fail_new)) -eq 0 ]; 
@@ -76,7 +76,7 @@ phases:
           echo Build completed on `date`
           echo Pushing the Docker image...
           docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$timestamp
-          curl -X POST -H 'Content-type:application/json' --data "{\"text\": \"${IMAGE_REPO_NAME}:${timestamp} passed SCA, SAST, DAST check and uploaded to ECR\"}" $SLACK_WEBHOOK
+          curl -X POST -H 'Content-type:application/json' --data "{\"text\": \"Build ${IMAGE_REPO_NAME}:${timestamp} passed SCA, SAST, DAST check and uploaded to ECR\"}" $SLACK_WEBHOOK
         else
-          curl -X POST -H 'Content-type:application/json' --data "{\"text\": \"${IMAGE_REPO_NAME}:${timestamp} failed at least one of SCA, SAST, DAST check therefore not uploaded to ECR\"}" $SLACK_WEBHOOK
+          curl -X POST -H 'Content-type:application/json' --data "{\"text\": \"Build ${IMAGE_REPO_NAME}:${timestamp} failed at least one of SCA, SAST, DAST check therefore not uploaded to ECR\"}" $SLACK_WEBHOOK
         fi
