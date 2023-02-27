@@ -17,34 +17,34 @@ jobs:
     ruleId: '10038'
     url: http:\/\/docker-simple-webserver.+
     urlRegex: true
-  - newRisk: False Positive
-    ruleId: '10038'
-    url: http://docker-simple-webserver
-    urlRegex: true
-  - newRisk: False Positive
-    ruleId: '10055'
-    url: http:\/\/docker-simple-webserver.+
-    urlRegex: true
-  - newRisk: False Positive
-    ruleId: '10055'
-    url: http://docker-simple-webserver
-    urlRegex: true
-  - newRisk: False Positive
-    ruleId: '10063'
-    url: http:\/\/docker-simple-webserver.+
-    urlRegex: true
-  - newRisk: False Positive
-    ruleId: '10063'
-    url: http://docker-simple-webserver
-    urlRegex: true
-  - newRisk: False Positive
-    ruleId: '10037'
-    url: http:\/\/docker-simple-webserver.+
-    urlRegex: true
-  - newRisk: False Positive
-    ruleId: '10037'
-    url: http://docker-simple-webserver
-    urlRegex: true
+#   - newRisk: False Positive
+#     ruleId: '10038'
+#     url: http://docker-simple-webserver
+#     urlRegex: true
+#   - newRisk: False Positive
+#     ruleId: '10055'
+#     url: http:\/\/docker-simple-webserver.+
+#     urlRegex: true
+#   - newRisk: False Positive
+#     ruleId: '10055'
+#     url: http://docker-simple-webserver
+#     urlRegex: true
+#   - newRisk: False Positive
+#     ruleId: '10063'
+#     url: http:\/\/docker-simple-webserver.+
+#     urlRegex: true
+#   - newRisk: False Positive
+#     ruleId: '10063'
+#     url: http://docker-simple-webserver
+#     urlRegex: true
+#   - newRisk: False Positive
+#     ruleId: '10037'
+#     url: http:\/\/docker-simple-webserver.+
+#     urlRegex: true
+#   - newRisk: False Positive
+#     ruleId: '10037'
+#     url: http://docker-simple-webserver
+#     urlRegex: true
   - newRisk: False Positive
     ruleId: '10021'
     url: http:\/\/docker-simple-webserver.+
