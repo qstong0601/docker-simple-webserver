@@ -11,6 +11,7 @@ phases:
     on-failure: CONTINUE
     commands:
       - set +e
+      - chmod -R 777 .
       - echo Build started on `date`
       - echo Building the Docker image...
       - export timestamp=$(date +%Y%m%d%H%M%S)
