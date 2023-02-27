@@ -14,14 +14,6 @@ jobs:
   type: passiveScan-config
 - alertFilters:
   - newRisk: False Positive
-    ruleId: '10020'
-    url: http:\/\/docker-simple-webserver.+
-    urlRegex: true
-  - newRisk: False Positive
-    ruleId: '10020'
-    url: http://docker-simple-webserver
-    urlRegex: true
-  - newRisk: False Positive
     ruleId: '10038'
     url: http:\/\/docker-simple-webserver.+
     urlRegex: true
