@@ -26,7 +26,7 @@ phases:
       - docker network create zap-network
       - docker run --rm --name $IMAGE_REPO_NAME -d --network zap-network $IMAGE_REPO_NAME:$timestamp
       #- docker run --rm --network zap-network -v $PWD:/zap/wrk/:rw owasp/zap2docker-stable zap-baseline.py -I -j -t http://$IMAGE_REPO_NAME:$CONTAINER_PORT -c /zap/wrk/scan.conf -r $IMAGE_REPO_NAME_$timestamp.html > output_dast; exit_code_dast=$?
-      - docker run --network=host -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable bash -c "zap.sh -cmd -addonupdate; zap.sh -cmd -autorun /zap/wrk/zap.yaml" > output_dast; exit_code_dast=$?
+      - docker run --network=zap-network -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable bash -c "zap.sh -cmd -addonupdate; zap.sh -cmd -autorun /zap/wrk/zap.yaml" > output_dast; exit_code_dast=$?
       - echo $exit_code_dast
       - | 
         warn_new=$(tail -n 1 output_dast | sed -n 's/^.*WARN-NEW: \([0-9]\+\).*$/\1/p'); fail_new=$(tail -n 1 output_dast | sed -n 's/^.*FAIL-NEW: \([0-9]\+\).*$/\1/p')
