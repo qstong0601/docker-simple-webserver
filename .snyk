@@ -1,0 +1,80 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.0
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-DEBIAN9-SHADOW-306269:
+    - '*':
+        reason: None Given
+        expires: 2023-04-05T19:59:38.953Z
+        created: 2023-03-06T19:59:38.955Z
+  SNYK-DEBIAN9-GLIBC-356654:
+    - '*':
+        reason: None Given
+        expires: 2023-04-05T19:59:38.953Z
+        created: 2023-03-06T19:59:38.955Z
+  SNYK-DEBIAN9-GLIBC-356686:
+    - '*':
+        reason: None Given
+        expires: 2023-04-05T19:59:38.953Z
+        created: 2023-03-06T19:59:38.955Z
+  SNYK-DEBIAN9-DPKG-2847943:
+    - '*':
+        reason: None Given
+        expires: 2023-04-05T19:59:38.953Z
+        created: 2023-03-06T19:59:38.955Z
+  SNYK-UPSTREAM-NODE-73601:
+    - '*':
+        reason: None Given
+        expires: 2023-04-05T21:36:36.570Z
+        created: 2023-03-06T21:36:36.575Z
+  SNYK-DEBIAN9-PERL-327596:
+    - '*':
+        reason: None Given
+        expires: 2023-04-05T21:36:36.570Z
+        created: 2023-03-06T21:36:36.575Z
+  SNYK-DEBIAN9-PERL-327610:
+    - '*':
+        reason: None Given
+        expires: 2023-04-05T21:36:36.570Z
+        created: 2023-03-06T21:36:36.575Z
+  SNYK-DEBIAN9-PERL-327621:
+    - '*':
+        reason: None Given
+        expires: 2023-04-05T21:36:36.570Z
+        created: 2023-03-06T21:36:36.575Z
+  SNYK-DEBIAN9-PERL-327638:
+    - '*':
+        reason: None Given
+        expires: 2023-04-05T21:36:36.570Z
+        created: 2023-03-06T21:36:36.575Z
+  SNYK-DEBIAN9-PERL-327647:
+    - '*':
+        reason: None Given
+        expires: 2023-04-05T21:36:36.570Z
+        created: 2023-03-06T21:36:36.575Z
+  SNYK-DEBIAN9-PERL-327700:
+    - '*':
+        reason: None Given
+        expires: 2023-04-05T21:36:36.570Z
+        created: 2023-03-06T21:36:36.575Z
+  SNYK-DEBIAN9-OPENSSL-2933517:
+    - '*':
+        reason: None Given
+        expires: 2023-04-05T21:36:36.570Z
+        created: 2023-03-06T21:36:36.575Z
+  SNYK-DEBIAN9-OPENSSL-2939638:
+    - '*':
+        reason: None Given
+        expires: 2023-04-05T21:36:36.570Z
+        created: 2023-03-06T21:36:36.575Z
+  SNYK-DEBIAN9-LZ4-1277599:
+    - '*':
+        reason: None Given
+        expires: 2023-04-05T21:36:36.570Z
+        created: 2023-03-06T21:36:36.575Z
+  SNYK-DEBIAN9-GLIBC-356488:
+    - '*':
+        reason: None Given
+        expires: 2023-04-05T21:36:36.570Z
+        created: 2023-03-06T21:36:36.575Z
+patch: {}
